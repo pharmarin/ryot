@@ -427,7 +427,7 @@ pub struct UsersConfig {
 #[config(rename_all = "snake_case", env_prefix = "SERVER_")]
 pub struct ServerConfig {
     /// The path where the config file will be written once the server boots up.
-    #[setting(default = format!("/data/{}-config.json", PROJECT_NAME))]
+    #[setting(default = format!("./data/{}-config.json", PROJECT_NAME))]
     pub config_dump_path: String,
     /// An array of URLs for CORS.
     #[setting(default = vec![], parse_env = schematic::env::split_comma)]
