@@ -117,7 +117,7 @@ impl IsFeatureEnabled for BookConfig {}
 pub struct DatabaseConfig {
     /// The database connection string. Supports SQLite, MySQL and Postgres.
     /// Format described in https://www.sea-ql.org/SeaORM/docs/install-and-config/connection.
-    #[setting(default = format!("sqlite:/data/{}.db?mode=rwc", PROJECT_NAME))]
+    #[setting(default = format!("sqlite:./data/{}.db?mode=rwc", PROJECT_NAME))]
     pub url: String,
 }
 
