@@ -96,27 +96,6 @@ jobs:
           gh release upload ${{ github.ref_name }} $(cat uploads.txt)
           echo "uploaded!"
 
-  upload-kodi-plugin:
-    needs: create-release
-    runs-on: ubuntu-20.04
-    env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Install nodejs dependencies
-        run: yarn install --immutable
-      - name: Setup Moon
-        uses: moonrepo/setup-moon-action@v1.2.0
-      - name: Build plugin
-        run: |
-          moon run kodi:build
-      - name: Upload plugin to releases
-        run: |
-          gh release upload ${{ github.ref_name }} "tmp/script.ryot.zip"
-
   docker-release:
     runs-on: ubuntu-latest
     needs: create-release
@@ -160,8 +139,7 @@ jobs:
   # Mark the Github Release™ as a non-draft now that everything has succeeded!
   publish-release:
     # Only run after all the other tasks, but it's ok if upload-artifacts was skipped
-    needs:
-      [create-release, upload-artifacts, docker-release, upload-kodi-plugin]
+    needs: [create-release, upload-artifacts, docker-release]
     if: ${{ always() && needs.create-release.result == 'success' && (needs.upload-artifacts.result == 'skipped' || needs.upload-artifacts.result == 'success') }}
     runs-on: ubuntu-latest
     env:
