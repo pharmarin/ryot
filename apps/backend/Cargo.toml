@@ -1,8 +1,8 @@
 [package]
 name = "ryot"
-version = "2.14.2"
-edition = "2021"
-repository = "https://github.com/IgnisDa/ryot"
+version = "0.0.1"
+edition = "2023"
+repository = "https://github.com/pharmarin/ryot"
 license = "GPL-V3"
 
 [dependencies]
