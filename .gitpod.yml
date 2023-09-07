@@ -5,7 +5,7 @@
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 
 tasks:
-  - init: yarn install && cargo build && brew install mprocs caddy && npm i -g @moonrepo/cli && cd apps/frontend && yarn next build
+  - init: yarn install && cargo build && brew install mprocs && npm i -g @moonrepo/cli && cd apps/frontend && yarn next build
     command: cargo watch -x run
 
 
