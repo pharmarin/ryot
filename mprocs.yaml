@@ -1,5 +1,5 @@
 procs:
   Backend:
-    shell: "cargo watch -qx 'run --package ryot --features development'"
+    shell: "cargo watch --watch apps/backend -qx 'run --package ryot --features development'"
   Frontend:
-    shell: "moon run frontend:dev"
+    shell: "cd apps/frontend && yarn next dev"

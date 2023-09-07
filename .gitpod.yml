@@ -6,6 +6,6 @@
 
 tasks:
   - init: yarn install && cargo build && brew install mprocs && npm i -g @moonrepo/cli && cd apps/frontend && yarn next build
-    command: cargo watch -x run
+    command: mprocs
 
 
